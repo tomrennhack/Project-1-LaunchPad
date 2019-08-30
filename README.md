@@ -19,6 +19,17 @@
 
     4. Identify and prioritize essential user stories (limit this to 3 or fewer)?
         As a user, I want to know the weather for my vacation week so I can enjoy my vacation.
+            Identify location
+            Identify time/date
+            Refer to weather API
+            Provide weather description (rainy, snowy, sunny, cloudy, etc.)
+        
         As a user, I want to search nearby concerts and events with Maps so I can see what's going on around me.
-        As a user, I want to identify places and people in need so I can help them.
+            User specifies location, distance, and time range
+            Use ??? API for entertainment events within X miles of location
+            Organize events by type (concerts, sports, other shows, etc.)
+            Allow user to star/save items of interest
+
         As a user, I want to experience different cultures so I can better understand humanity.
+            User specifies country
+            App returns popular music, foods, Wiki articles, videos, etc.
