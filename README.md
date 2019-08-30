@@ -2,11 +2,11 @@
 
 
     Cultural Exploration App
-    Select a country/location by entering text or selecting on a map
-    Can help with travel plans, learning about other places, etc.
-    Offer to receive videos, articles, news items, music, etc.
-    Provide links or embedded items based on user selections
-    API: Google Maps, Wikipedia, YouTube, news outlets
+        Select a country/location by entering text or selecting on a map
+        Can help with travel plans, learning about other places, etc.
+        Offer to receive videos, articles, news items, music, etc.
+        Provide links or embedded items based on user selections
+        API: Google Maps, Wikipedia, YouTube, news outlets
 
     1. Who is your target audience?
         Anyone looking to grow or learn about another place and culture (i.e. travelers, students, researchers, etc.)
