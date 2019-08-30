@@ -1,6 +1,5 @@
 # team-project
 
-<<<<<<< HEAD
 General Idea:
     Cultural Exploration App
     Select a country/location by entering text or selecting on a map
@@ -25,6 +24,3 @@ Essential user stories:
 
 
     As a ___ I want to ___ so I can ___.
-=======
-Sam adding to readme
->>>>>>> fd73c29fb56afd8d57c7d3940b7f043edd7c3842
