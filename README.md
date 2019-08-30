@@ -1,6 +1,6 @@
 # team-project
 
-    General Idea:
+
     Cultural Exploration App
     Select a country/location by entering text or selecting on a map
     Can help with travel plans, learning about other places, etc.
@@ -8,19 +8,17 @@
     Provide links or embedded items based on user selections
     API: Google Maps, Wikipedia, YouTube, news outlets
 
-    Audience: 
-    Travelers
-    People interested in learning about other cultures
-    Students, the curious
+    1. Who is your target audience?
+        Anyone looking to grow or learn about another place and culture (i.e. travelers, students, researchers, etc.)
 
-    Problem being solved: 
-        
+    2. What is the problem that the product will address?
+        Learning about other cultures, knowledge sharing, consolidating information for consumption, provide visuals, organize articles.
 
-    Primary goal: 
-    Knowledge sharing
-    Providing a focused area for people to learn about a specific country and culture
+    3. What is the primary goal of the product?
+        To learn about other places, enhance your traveling plans, help prepare for travel and planning
 
-    Essential user stories: 
-
-
-    As a ___ I want to ___ so I can ___.
+    4. Identify and prioritize essential user stories (limit this to 3 or fewer)?
+        As a user, I want to know the weather for my vacation week so I can enjoy my vacation.
+        As a user, I want to search nearby concerts and events with Maps so I can see what's going on around me.
+        As a user, I want to identify places and people in need so I can help them.
+        As a user, I want to experience different cultures so I can better understand humanity.
