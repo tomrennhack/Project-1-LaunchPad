@@ -197,3 +197,30 @@ $("#search-country").on("click", function () {
 })
 
 
+// weather api code
+
+$("#search-country").on("click", function () {
+
+    var cityState = $("#country-input").val().trim()
+    var queryURL = url= "https://api.aerisapi.com/observations/" + cityState + "?client_id=2nCwoHULlzXQ8LvHXCfym&client_secret=TQO1Nn2BIkEADjcZmwrAiAL2mxmFOFinkdJosh4R"
+    
+    
+                   
+    $.ajax({
+        url: queryURL,
+        method: "GET"
+    }).done(function (json) {
+        if (json.success == true) {
+            var ob = json.response.ob;
+            $('#weather-results').html('The current weather is ' + ob.weather + ' <br> Fahrenheit temperature of ' + ob.tempF + '&deg;' + '<br> Celsius temperature of ' + ob.tempC + '&deg;' + '<br> The Humidity is: ' + ob.humidity + '%');
+         }
+         else {
+            alert('An error occurred: ' + json.error.description);
+         }
+     });
+});
+        
+
+         
+
+
