@@ -34,19 +34,51 @@
         </div>
     </div>
     <hr>
+
+    <!-- first row for weather, temperature, currency, time(zone) -->
     <div class="row mx-auto" style="width: 10">
         <div class="col">
             <div class="card">
                 <div class="card-header">
-                    Country Overview
+                    Weather
                 </div>
-                <div class="card-body" id="wikipedia-results"></div>
+                <div class="card-body" id="weather-results"></div>
             </div>
         </div>
         <div class="col">
             <div class="card">
                 <div class="card-header">
-                    Popular Videos
+                    Time
+                </div>
+                <div class="card-body" id="time-results">
+
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card">
+                <div class="card-header">
+                    Currency
+                </div>
+                <div class="card-body" id="currency-results"></div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <!-- second row for videos, music, news, etc. -->
+    <div class="row mx-auto" style="width: 10">
+        <div class="col">
+            <div class="card">
+                <div class="card-header">
+                    Top News
+                </div>
+                <div class="card-body" id="youtube-news-results"></div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card">
+                <div class="card-header">
+                    Top Videos
                 </div>
                 <div class="card-body" id="youtube-results">
 
@@ -56,14 +88,15 @@
         <div class="col">
             <div class="card">
                 <div class="card-header">
-                    Popular Music
+                    Top Music
                 </div>
-                <div class="card-body" id="spotify-results"></div>
+                <div class="card-body" id="youtube-music-results"></div>
             </div>
         </div>
+    </div>
 
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-        <script src="assets/javascript/project-app.js" type="text/javascript"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="assets/javascript/project-app.js" type="text/javascript"></script>
 
 </body>
 
