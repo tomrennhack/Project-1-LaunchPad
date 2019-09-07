@@ -10,37 +10,46 @@
     <title>Cultural Exploration App</title>
     <style>
         body {
-            background-image: url(https://images.alphacoders.com/674/thumb-1920-674925.png);
-            background-size: cover;
+            background-image: url(/Users/tomrennhack/development/class-work/team-project/assets/images/mountains-garret-parker.jpg);
+            background-size: 1500px;
         }
+
+        .navigation {
+            color: whitesmoke;
+            border: solid 2px whitesmoke;
+            background-color: rgb(60,65,67,0.8);
+            border-radius: 10px;
+            text-align: center;
+            margin-left: 10px;
+        }
+
+        .app-name {
+            color: whitesmoke;
+            font-size: 2.5em;
+            font-weight: bold;
+        }
+
+        #header-section {
+            background-color: rgb(41,44,43,0.5);
+            border-bottom: solid 2px whitesmoke;
+        }
+
+        a {
+            text-decoration: none;
+            color: whitesmoke;
+        }
+
     </style>
 </head>
 
 <body>
-    <div class="jumbotron text-center col-8 mx-auto mt-4">
-        <h3>Click below to check out the</h3>
-        <h1>Cultural Exploration App!</h1>
-        <a href="app.html">
-            <h1 class="btn-lg btn-primary" style="border: solid 1px black; border-radius: 5px;">Away we gooo!!!</h1>
-        </a>
-    </div>
-    <div class="jumbotron text-center col-8 mx-auto mt-4">
-        <div class="row">
-            <div class="col">
-                <h3>Sinuhe</h3>
-                <h4>Weather API Integration</h4>
-            </div>
-            <div class="col">
-                <h3>Sam</h3>
-                <h4>Video API Integration</h4>
-            </div>
-            <div class="col">
-                <h3>Tom</h3>
-                <h4>Music API Integration</h4>
-            </div>
-        </div>
 
+    <div class="row pt-5 pb-2 pr-5 pl-5" id="header-section">
+        <div class="col app-name">Cultural Exploration App</div>
+        <button type="button" class="btn navigation">About Us</button>
+        <button type="button" class="btn navigation"><a href="app.html">Application</a></button>
     </div>
+
 </body>
 
 </html>
