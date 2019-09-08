@@ -1,4 +1,55 @@
 .card-header {
     width: 10px;
+}
 
+#body-index {
+    background-image: url(../images/mountains-garret-parker.jpg);
+    background-size: 100%;
+    position: absolute;
+}
+
+#body-future {
+    background-image: url(../images/GP-city.jpg);
+    background-size: 100%;
+}
+
+#header-section {
+    background-color: rgb(41,44,43,0.5);
+    border-bottom: solid 2px whitesmoke;
+}
+
+.app-name {
+    color: whitesmoke;
+    font-size: 2.5em;
+    font-weight: bold;
+}
+
+.team-names {
+    color: whitesmoke;
+    font-size: 1.1em;
+    border-left: solid 1px whitesmoke;
+}
+
+.navigation {
+    color: whitesmoke;
+    border: solid 2px whitesmoke;
+    background-color: rgb(60,65,67,0.8);
+    border-radius: 10px;
+    text-align: center;
+    margin-left: 10px;
+}
+
+a {
+    color: whitesmoke;
+}
+
+a:hover {
+    color: rgb(60,65,67);
+    text-decoration: none;
+}
+
+.page-body {
+    background-color: rgb(60,65,67,.4);
+    color: whitesmoke;
+    border-radius: 15px;
 }
