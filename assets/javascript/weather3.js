@@ -21,7 +21,7 @@ $("#search-country").on("click", function () {
         }
 
          else {
-            alert('For the weather, please type (City),(either State, Provience, or Country): ');
+            alert('For the weather, Please type (City),(either State, Provience, or Country): ');
          }
      });
 });
