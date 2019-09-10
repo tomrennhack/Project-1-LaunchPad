@@ -1,3 +1,10 @@
+$(document).ready(function () {
+    console.log("ready!");
+});
+
+
+
+
 $("#search-country").on("click", function () {
 
     // Split input to get country & city name
@@ -190,8 +197,22 @@ $("#search-country").on("click", function () {
 
         var exchangeRate = response.rates.AUD;
 
+        console.log(response)
+
         // create var for thumbnail image
         var textDiv = $("<div>");
+
+        // create currency conversion section
+        var formInput = $("<input>")
+        formInput.attr('class', 'form-control input-lg col-9 mr-2');
+        formInput.attr('id', 'currencyInput');
+
+        var buttonInput = $("<input>")
+        buttonInput.attr('type', 'submit');
+        buttonInput.attr('id', 'currencyButton');
+        buttonInput.attr('class', 'btn btn-primary col');
+        buttonInput.attr('value', 'Convert');
+
 
         // Creating a paragraph tag with the result item's rating
         var p = $("<p>").text("Current Exchange Rate: " + exchangeRate);
@@ -199,12 +220,27 @@ $("#search-country").on("click", function () {
         // Appending the paragraph and personImage we created to the "gifDiv" div we created
         textDiv.append(p);
 
-        // Appending the paragraph and personImage we created to the "gifDiv" div we created
-        textDiv.append(p);
+        // // Appending the paragraph and personImage we created to the "gifDiv" div we created
+        // textDiv.append(p);
 
         // Appending the gifDiv to the "#gifs-appear-here" div in the HTML
         $("#currency-results").append(textDiv);
+        $("#currency-results").append(formInput);
+        $("#currency-results").append(buttonInput);
 
+
+        // currency conversion calculation
+        $("#currencyButton").on("click", function () {
+            var userInput = $('#currencyInput').val();
+            console.log(userInput)
+
+            var convertedAmount = userInput * exchangeRate;
+            console.log(convertedAmount)
+
+            var CurrencyTextDiv = $("<p>").text("Cha-ching, you have: " + convertedAmount + " to spend");            
+           
+            $("#currency-results").append(CurrencyTextDiv);
+        })
     });
 
     // GET WEATHER
@@ -222,6 +258,12 @@ $("#search-country").on("click", function () {
             alert('An error occurred: ' + json.error.description);
         }
     });
+
+
 })
+
+
+
+
 
 
