@@ -7,34 +7,41 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <title>Cultural Exploration App</title>
-    <style>
-        body {
-            background-image: url(https://images.alphacoders.com/674/thumb-1920-674925.png);
-            background-size: cover;
-        }
-
-    
-    </style>
+    <link rel="stylesheet" href="assets/CSS/style.css">
+    <title>launchpad</title>
 </head>
 
-<body>
-    <div class="jumbotron col-10 mx-auto mt-3">
-        <div class="row">
-            <div class="col text-center">
-                <h2>Where would you like to go?</h2>
-            </div>
+
+
+<body id="body-app">
+
+    <!-- title and navigation -->
+    <div class="row pt-5 pr-5 pl-5" id="header-section">
+        <div class="col app-name"><a href="index.html"><img src="assets/images/logo1.png" height="80px"><img
+                    src="assets/images/logo2.png" height="80px"></a></div>
+        <div class="col team-names">
+            <p><i>Presented to you by:</i><br />Sam Will, Sinuhe Montero, Tom Rennhack</p>
         </div>
-        <div class="form col-5 text-center mx-auto" id="user-search">
-            <label for="country-input">Enter a country you want to travel to or learn more about:</label>
-            <div class="row">
-                <input class="form-control input-lg col-9 mr-2" id="country-input" type="text" placeholder="enter city, country">
-                <!-- button to submit user-input -->
-                <input id="search-country" type="submit" value="Let's go!" class="btn btn-primary col">
+        <a href="index.html"><button type="button" class="btn navigation">App Overview</button></a>
+        <a href="future.html"><button type="button" class="btn navigation">Future State</button></a>
+        <a href="app.html"><button type="button" class="btn navigation">Application</button></a>
+    </div>
+
+    <!-- ENTRY POINT -->
+    <div class="container mt-3" id="user-input-section">
+        <div class="row">
+            <div class="col-6 text-center">
+                <h2>Where are you heading?</h2>
             </div>
-            </form>
+            <div class="col text-center form" id="user-search">
+                <input class="form-control" id="country-input" type="text" placeholder="enter city, country">
+            </div>
+            <div class="col text-left form" id="user-search">
+                <input id="search-country" type="submit" value="Launch" class="btn btn-warning col-6">
+            </div>
         </div>
     </div>
+
     <hr>
 
     <!-- first row for weather, temperature, currency, time(zone) -->

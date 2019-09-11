@@ -1,17 +1,7 @@
-.card-header {
-    width: 10px;
-}
+/* ===================================================== */
+/* MULTI-PAGE HEADER FORMATS */
+/* ===================================================== */
 
-#body-index {
-    background-image: url(../images/mountains-garret-parker.jpg);
-    background-size: 110%;
-    position: absolute;
-}
-
-#body-future {
-    background-image: url(../images/GP-city.jpg);
-    background-size: 100%;
-}
 
 #header-section {
     /* background-color: rgb(41,44,43,0.5); */
@@ -44,6 +34,11 @@ a:hover {
     text-decoration: none;
 }
 
+
+/* ===================================================== */
+/* MULTI-PAGE BODY FORMATS */
+/* ===================================================== */
+
 p {
     font-size: 1.2em;
 }
@@ -62,4 +57,44 @@ li {
 
 hr {
     border-top: solid 1px rgb(245,245,245,.5);
+}
+
+
+/* ===================================================== */
+/* INDEX PAGE */
+/* ===================================================== */
+
+#body-index {
+    background-image: url(../images/GP-mountains.jpg);
+    background-size: 110%;
+    position: absolute;
+}
+
+
+/* ===================================================== */
+/* FUTURE STATE PAGE */
+/* ===================================================== */
+
+#body-future {
+    background-image: url(../images/sky.jpeg);
+    background-size: 110%;
+}
+
+
+/* ===================================================== */
+/* APP PAGE */
+/* ===================================================== */
+
+
+#body-app {
+    background-image: url(../images/GP-city.jpg);
+    background-size:110%;
+}
+
+#user-input-section {
+    /* background-color: rgba(176, 186, 126, 0.728); */
+    color: whitesmoke;
+    margin: 10px;
+    border-radius: 5px;
+    padding: 20px;
 }
