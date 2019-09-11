@@ -201,7 +201,7 @@ $("#search-country").on("click", function () {
         $("#flag-results").prepend(flagImage);
 
         // GET EXCHANGE RATE
-        var exchangeRateURL = "https://free.currconv.com/api/v7/convert?q=USD_"+currencyCode + "&compact=ultra&apiKey=e7bc0a1e1902cbc31b55"
+        var exchangeRateURL = "https://free.currconv.com/api/v7/convert?q=USD_"+ currencyCode + "&compact=ultra&apiKey=e7bc0a1e1902cbc31b55"
 
         $.ajax({
             url: exchangeRateURL,
@@ -209,7 +209,6 @@ $("#search-country").on("click", function () {
         }).then(function (response) {
             console.log(Object.values(response)[0])
             var exchangeRate = Object.values(response)[0].toFixed(2);
-            
 
             // create var for thumbnail image
             var textDiv = $("<div>");
@@ -218,6 +217,7 @@ $("#search-country").on("click", function () {
             var formInput = $("<input>")
             formInput.attr('class', 'form-control input-lg col-9 mr-2');
             formInput.attr('id', 'currencyInput');
+            formInput.attr("style", "margin-bottom: 10px");
 
             var buttonInput = $("<input>")
             buttonInput.attr('type', 'submit');
@@ -247,7 +247,7 @@ $("#search-country").on("click", function () {
                 var convertedAmount = userInput * exchangeRate;
                 console.log(convertedAmount)
 
-                var CurrencyTextDiv = $("<p>").text("Cha-ching, you have: " + convertedAmount + " to spend");
+                var CurrencyTextDiv = $("<p>").text("Boom, you have: " + convertedAmount +" " + currencyCode+ " to spend");
                 CurrencyTextDiv.attr('id', 'CurrencyDisplay');
 
                 $("#currency-results").append(CurrencyTextDiv);
@@ -260,9 +260,8 @@ $("#search-country").on("click", function () {
 
 
 
-    // Weather and TimeStamp api code
-
-
+    // GET WEATHER
+    var weatherURL = url = "https://api.aerisapi.com/observations/" + userInput + "?client_id=2nCwoHULlzXQ8LvHXCfym&client_secret=TQO1Nn2BIkEADjcZmwrAiAL2mxmFOFinkdJosh4R"
 
     var cityState = $("#country-input").val().trim()
     var queryURL = url= "https://api.aerisapi.com/observations/" + cityState + "?client_id=2nCwoHULlzXQ8LvHXCfym&client_secret=TQO1Nn2BIkEADjcZmwrAiAL2mxmFOFinkdJosh4R"
@@ -270,24 +269,17 @@ $("#search-country").on("click", function () {
     
                    
     $.ajax({
-        url: queryURL,
+        url: weatherURL,
         method: "GET"
     }).done(function (json) {
         if (json.success == true) {
             var ob = json.response.ob;
-             // Weather
-             $('#weather-results').html('The current weather is ' + ob.weather + '<br>' + ' <br> Currently ' + ob.tempF + '&deg;' + 'F' + '<br> Feels like ' + ob.feelslikeF +  '&deg;' + 'F' + '<br>' + '<br> Currently ' + ob.tempC + '&deg;' + 'C' + '<br> Feels like ' + ob.feelslikeC + '&deg;'  + 'C' +  '<br>' + '<br> The Humidity is: ' + ob.humidity + '%');
-             // TimeStamp
-             $('#time-results').html('Date and time is ' + '<br>' + ob.dateTimeISO +  '<br>' + ' <br> Sunrise with data/time: ' + '<br>' + ob.sunriseISO + '<br>' +  '<br> Sunset with date/time: ' + '<br>' + ob.sunsetISO);
-         
+            $('#weather-results').text('The current weather is ' + ob.weather + ' <br> Fahrenheit temperature of ' + ob.tempF + '&deg;' + '<br> Celsius temperature of ' + ob.tempC + '&deg;' + '<br> The Humidity is: ' + ob.humidity + '%');
         }
-
-         else {
-            alert('For the weather, please type (City),(either State, Provience, or Country): ');
-         }
-     });
-
-       
+        else {
+            alert('An error occurred: ' + json.error.description);
+        }
+    });
 
 
 
