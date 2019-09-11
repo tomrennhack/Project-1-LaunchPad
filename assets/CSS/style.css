@@ -6,8 +6,14 @@
 #header-section {
     /* background-color: rgb(41,44,43,0.5); */
     /* border-bottom: solid 2px whitesmoke; */
-    background-color: rgb(245,245,245,.6);
+    background-color: rgb(245,245,245,.85);
     color: rgb(50,50,50);
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    z-index: 1;
+    padding: 50px 60px 0px 40px;
 }
 
 .team-names {
@@ -18,7 +24,8 @@
 .navigation {
     color: whitesmoke;
     /* border: solid 2px whitesmoke; */
-    background-color: rgb(60,65,67,0.8);
+    /* background-color: rgb(60,65,67,0.8); */
+    background-color: rgb(84,61,90,.8);
     border-radius: 10px;
     text-align: center;
     margin-left: 10px;
@@ -39,6 +46,23 @@ a:hover {
 /* MULTI-PAGE BODY FORMATS */
 /* ===================================================== */
 
+#body-section {
+    margin: 175px 50px 50px 50px;
+    z-index: 0;
+}
+
+#body-section-bottom {
+    background-color: rgb(84,61,90,.7);
+    border-radius: 15px;
+    margin: -20px 50px 50px 50px;
+    z-index: 0;
+}
+
+.page-body {
+    color: whitesmoke;
+    padding: 30px;
+}
+
 p {
     font-size: 1.2em;
 }
@@ -47,13 +71,7 @@ li {
     font-size: 1.2em;
 }
 
-.page-body {
-    /* background-color: rgb(245,245,245,.55); */
-    /* color: rgb(50,50,50); */
-    /* background-color: rgb(60,65,67,0.4); */
-    color: whitesmoke;
-    border-radius: 15px;
-}
+
 
 hr {
     border-top: solid 1px rgb(245,245,245,.5);
@@ -94,7 +112,17 @@ hr {
 #user-input-section {
     /* background-color: rgba(176, 186, 126, 0.728); */
     color: whitesmoke;
-    margin: 10px;
+    margin: 175px 0px 0px 0px;
     border-radius: 5px;
     padding: 20px;
+    z-index: 0;
+}
+
+.card-header {
+    background-color: rgb(220,210,230);;
+    color: rgb(84,61,90);
+    font-size: 1.2em;
+    font-weight: bold;
+    padding: 5px 0px 5px 10px;
+
 }
