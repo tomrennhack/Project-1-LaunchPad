@@ -263,6 +263,11 @@ $("#search-country").on("click", function () {
     // GET WEATHER
     var weatherURL = url = "https://api.aerisapi.com/observations/" + userInput + "?client_id=2nCwoHULlzXQ8LvHXCfym&client_secret=TQO1Nn2BIkEADjcZmwrAiAL2mxmFOFinkdJosh4R"
 
+    var cityState = $("#country-input").val().trim()
+    var queryURL = url= "https://api.aerisapi.com/observations/" + cityState + "?client_id=2nCwoHULlzXQ8LvHXCfym&client_secret=TQO1Nn2BIkEADjcZmwrAiAL2mxmFOFinkdJosh4R"
+    
+    
+                   
     $.ajax({
         url: weatherURL,
         method: "GET"
@@ -275,6 +280,7 @@ $("#search-country").on("click", function () {
             alert('An error occurred: ' + json.error.description);
         }
     });
+
 
 
 })
