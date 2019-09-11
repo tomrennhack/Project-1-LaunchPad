@@ -262,7 +262,7 @@ $("#search-country").on("click", function () {
 
     // Weather and TimeStamp api code
 
-$("#search-country").on("click", function () {
+
 
     var cityState = $("#country-input").val().trim()
     var queryURL = url= "https://api.aerisapi.com/observations/" + cityState + "?client_id=2nCwoHULlzXQ8LvHXCfym&client_secret=TQO1Nn2BIkEADjcZmwrAiAL2mxmFOFinkdJosh4R"
@@ -286,7 +286,7 @@ $("#search-country").on("click", function () {
             alert('For the weather, please type (City),(either State, Provience, or Country): ');
          }
      });
-});
+
        
 
 
