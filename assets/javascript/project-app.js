@@ -2,15 +2,15 @@ $(document).ready(function () {
     console.log("ready!");
 
     // GET EXCHANGE RATE
-    var newexchangeRateURL = "https://free.currconv.com/api/v7/convert?q=USD_AUD&compact=ultra&apiKey=e7bc0a1e1902cbc31b55"
+    // var newexchangeRateURL = "https://free.currconv.com/api/v7/convert?q=USD_AUD&compact=ultra&apiKey=e7bc0a1e1902cbc31b55"
 
-    $.ajax({
-        url: newexchangeRateURL,
-        method: "GET"
-    }).then(function (response) {
-        console.log(response.USD_AUD)
+    // $.ajax({
+    //     url: newexchangeRateURL,
+    //     method: "GET"
+    // }).then(function (response) {
+    //     console.log(response.USD_AUD)
 
-    })
+    // })
 
 
 
@@ -200,116 +200,65 @@ $("#search-country").on("click", function () {
         $("#currency-results").append(textDiv);
         $("#flag-results").prepend(flagImage);
 
+        // GET EXCHANGE RATE
+        var exchangeRateURL = "https://free.currconv.com/api/v7/convert?q=USD_"+currencyCode + "&compact=ultra&apiKey=e7bc0a1e1902cbc31b55"
+
+        $.ajax({
+            url: exchangeRateURL,
+            method: "GET"
+        }).then(function (response) {
+            console.log(Object.values(response)[0])
+            var exchangeRate = Object.values(response)[0].toFixed(2);
+            
+
+            // create var for thumbnail image
+            var textDiv = $("<div>");
+
+            // create currency conversion section
+            var formInput = $("<input>")
+            formInput.attr('class', 'form-control input-lg col-9 mr-2');
+            formInput.attr('id', 'currencyInput');
+
+            var buttonInput = $("<input>")
+            buttonInput.attr('type', 'submit');
+            buttonInput.attr('id', 'currencyButton');
+            buttonInput.attr('class', 'btn btn-primary col');
+            buttonInput.attr('value', 'Convert');
+
+            // Creating a paragraph tag with the result item's rating
+            var p = $("<p>").text("Current Exchange Rate: " + exchangeRate);
+
+            // Appending the paragraph and personImage we created to the "gifDiv" div we created
+            textDiv.append(p);
+
+            // Appending the gifDiv to the "#gifs-appear-here" div in the HTML
+            $("#currency-results").append(textDiv);
+            $("#currency-results").append(formInput);
+            $("#currency-results").append(buttonInput);
+
+            // currency conversion calculation
+            $("#currencyButton").on("click", function () {
+
+                $("#CurrencyDisplay").empty();
+
+                var userInput = $('#currencyInput').val();
+                console.log(userInput)
+
+                var convertedAmount = userInput * exchangeRate;
+                console.log(convertedAmount)
+
+                var CurrencyTextDiv = $("<p>").text("Cha-ching, you have: " + convertedAmount + " to spend");
+                CurrencyTextDiv.attr('id', 'CurrencyDisplay');
+
+                $("#currency-results").append(CurrencyTextDiv);
+            })
+        });
+
     });
 
 
-    // GET EXCHANGE RATE
-    var exchangeRateURL = "https://free.currconv.com/api/v7/convert?q=USD_AUD&compact=ultra&apiKey=e7bc0a1e1902cbc31b55"
 
-    $.ajax({
-        url: exchangeRateURL,
-        method: "GET"
-    }).then(function (response) {
 
-        var exchangeRate = response.USD_AUD.toFixed(2);
-        console.log(response)
-
-        // create var for thumbnail image
-        var textDiv = $("<div>");
-
-        // create currency conversion section
-        var formInput = $("<input>")
-        formInput.attr('class', 'form-control input-lg col-9 mr-2');
-        formInput.attr('id', 'currencyInput');
-
-        var buttonInput = $("<input>")
-        buttonInput.attr('type', 'submit');
-        buttonInput.attr('id', 'currencyButton');
-        buttonInput.attr('class', 'btn btn-primary col');
-        buttonInput.attr('value', 'Convert');
-
-        // Creating a paragraph tag with the result item's rating
-        var p = $("<p>").text("Current Exchange Rate: " + exchangeRate);
-
-        // Appending the paragraph and personImage we created to the "gifDiv" div we created
-        textDiv.append(p);
-
-        // Appending the gifDiv to the "#gifs-appear-here" div in the HTML
-        $("#currency-results").append(textDiv);
-        $("#currency-results").append(formInput);
-        $("#currency-results").append(buttonInput);
-
-        // currency conversion calculation
-        $("#currencyButton").on("click", function () {
-
-            $("#CurrencyDisplay").empty();
-
-            var userInput = $('#currencyInput').val();
-            console.log(userInput)
-
-            var convertedAmount = userInput * exchangeRate;
-            console.log(convertedAmount)
-
-            var CurrencyTextDiv = $("<p>").text("Cha-ching, you have: " + convertedAmount + " to spend");
-            CurrencyTextDiv.attr('id', 'CurrencyDisplay');
-
-            $("#currency-results").append(CurrencyTextDiv);
-        })
-    });
-
-    // // GET EXCHANGE RATE
-    // var exchangeRateURL = "http://data.fixer.io/api/latest?access_key=95ada76d8a2c4471a5bcd88b4baa463c&format=1"
-
-    // $.ajax({
-    //     url: exchangeRateURL,
-    //     method: "GET"
-    // }).then(function (response) {
-
-    //     var exchangeRate = response.rates.AUD.toFixed(2);
-    //     console.log(response)
-
-    //     // create var for thumbnail image
-    //     var textDiv = $("<div>");
-
-    //     // create currency conversion section
-    //     var formInput = $("<input>")
-    //     formInput.attr('class', 'form-control input-lg col-9 mr-2');
-    //     formInput.attr('id', 'currencyInput');
-
-    //     var buttonInput = $("<input>")
-    //     buttonInput.attr('type', 'submit');
-    //     buttonInput.attr('id', 'currencyButton');
-    //     buttonInput.attr('class', 'btn btn-primary col');
-    //     buttonInput.attr('value', 'Convert');
-
-    //     // Creating a paragraph tag with the result item's rating
-    //     var p = $("<p>").text("Current Exchange Rate: " + exchangeRate);
-
-    //     // Appending the paragraph and personImage we created to the "gifDiv" div we created
-    //     textDiv.append(p);
-
-    //     // Appending the gifDiv to the "#gifs-appear-here" div in the HTML
-    //     $("#currency-results").append(textDiv);
-    //     $("#currency-results").append(formInput);
-    //     $("#currency-results").append(buttonInput);
-
-    //     // currency conversion calculation
-    //     $("#currencyButton").on("click", function () {
-
-    //         $("#CurrencyDisplay").empty();
-
-    //         var userInput = $('#currencyInput').val();
-    //         console.log(userInput)
-
-    //         var convertedAmount = userInput * exchangeRate;
-    //         console.log(convertedAmount)
-
-    //         var CurrencyTextDiv = $("<p>").text("Cha-ching, you have: " + convertedAmount + " to spend");
-    //         CurrencyTextDiv.attr('id', 'CurrencyDisplay');
-
-    //         $("#currency-results").append(CurrencyTextDiv);
-    //     })
-    // });
 
     // GET WEATHER
     var weatherURL = url = "https://api.aerisapi.com/observations/" + userInput + "?client_id=2nCwoHULlzXQ8LvHXCfym&client_secret=TQO1Nn2BIkEADjcZmwrAiAL2mxmFOFinkdJosh4R"
