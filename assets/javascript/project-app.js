@@ -169,10 +169,10 @@ $("#search-country").on("click", function () {
         // Creating an image tag
         var flagImage = $("<img>");
 
-        // Creating a paragraph tag with the result item's rating
+        // Creating a paragraph tag with the result currency code
         var p = $("<p>").text("Currency Code: " + currencyCode);
 
-        // Appending the paragraph and personImage we created to the "gifDiv" div we created
+        // Appending the paragraph and flagimage we created to the "gifDiv" div we created
         flagImage.attr("src", flagURL);
         flagImage.attr("style", "height: 100px");
         textDiv.append(p);
@@ -185,7 +185,8 @@ $("#search-country").on("click", function () {
         $("#currency-results").append(textDiv);
         $("#flag-results").prepend(flagImage);
 
-    });
+    }); 
+
 
     // GET EXCHANGE RATE
     var exchangeRateURL = "http://data.fixer.io/api/latest?access_key=95ada76d8a2c4471a5bcd88b4baa463c&format=1"
@@ -195,7 +196,11 @@ $("#search-country").on("click", function () {
         method: "GET"
     }).then(function (response) {
 
-        var exchangeRate = response.rates.AUD;
+        var exchangeRate = response.rates.AUD.toFixed(2);
+        
+        
+
+
 
         console.log(response)
 
@@ -215,13 +220,12 @@ $("#search-country").on("click", function () {
 
 
         // Creating a paragraph tag with the result item's rating
-        var p = $("<p>").text("Current Exchange Rate: " + exchangeRate);
+        var p = $("<p>").text("Current Exchange Rate: " + exchangeRate );
 
         // Appending the paragraph and personImage we created to the "gifDiv" div we created
         textDiv.append(p);
+       
 
-        // // Appending the paragraph and personImage we created to the "gifDiv" div we created
-        // textDiv.append(p);
 
         // Appending the gifDiv to the "#gifs-appear-here" div in the HTML
         $("#currency-results").append(textDiv);
@@ -231,6 +235,9 @@ $("#search-country").on("click", function () {
 
         // currency conversion calculation
         $("#currencyButton").on("click", function () {
+            
+        $("#CurrencyDisplay").empty();
+
             var userInput = $('#currencyInput').val();
             console.log(userInput)
 
@@ -238,7 +245,8 @@ $("#search-country").on("click", function () {
             console.log(convertedAmount)
 
             var CurrencyTextDiv = $("<p>").text("Cha-ching, you have: " + convertedAmount + " to spend");            
-           
+            CurrencyTextDiv.attr('id', 'CurrencyDisplay');
+
             $("#currency-results").append(CurrencyTextDiv);
         })
     });
