@@ -4,7 +4,7 @@
 
 #body-index {
     background-image: url(../images/mountains-garret-parker.jpg);
-    background-size: 100%;
+    background-size: 110%;
     position: absolute;
 }
 
@@ -18,11 +18,6 @@
     /* border-bottom: solid 2px whitesmoke; */
     background-color: rgb(245,245,245,.6);
     color: rgb(50,50,50);
-}
-
-.app-name {
-    font-size: 2.5em;
-    font-weight: bold;
 }
 
 .team-names {
