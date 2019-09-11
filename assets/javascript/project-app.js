@@ -243,21 +243,35 @@ $("#search-country").on("click", function () {
         })
     });
 
-    // GET WEATHER
-    var weatherURL = url = "https://api.aerisapi.com/observations/" + userInput + "?client_id=2nCwoHULlzXQ8LvHXCfym&client_secret=TQO1Nn2BIkEADjcZmwrAiAL2mxmFOFinkdJosh4R"
+    // Weather and TimeStamp api code
 
+$("#search-country").on("click", function () {
+
+    var cityState = $("#country-input").val().trim()
+    var queryURL = url= "https://api.aerisapi.com/observations/" + cityState + "?client_id=2nCwoHULlzXQ8LvHXCfym&client_secret=TQO1Nn2BIkEADjcZmwrAiAL2mxmFOFinkdJosh4R"
+    
+    
+                   
     $.ajax({
-        url: weatherURL,
+        url: queryURL,
         method: "GET"
     }).done(function (json) {
         if (json.success == true) {
             var ob = json.response.ob;
-            $('#weather-results').html('The current weather is ' + ob.weather + ' <br> Fahrenheit temperature of ' + ob.tempF + '&deg;' + '<br> Celsius temperature of ' + ob.tempC + '&deg;' + '<br> The Humidity is: ' + ob.humidity + '%');
+             // Weather
+             $('#weather-results').html('The current weather is ' + ob.weather + '<br>' + ' <br> Currently ' + ob.tempF + '&deg;' + 'F' + '<br> Feels like ' + ob.feelslikeF +  '&deg;' + 'F' + '<br>' + '<br> Currently ' + ob.tempC + '&deg;' + 'C' + '<br> Feels like ' + ob.feelslikeC + '&deg;'  + 'C' +  '<br>' + '<br> The Humidity is: ' + ob.humidity + '%');
+             // TimeStamp
+             $('#time-results').html('Date and time is ' + '<br>' + ob.dateTimeISO +  '<br>' + ' <br> Sunrise with data/time: ' + '<br>' + ob.sunriseISO + '<br>' +  '<br> Sunset with date/time: ' + '<br>' + ob.sunsetISO);
+         
         }
-        else {
-            alert('An error occurred: ' + json.error.description);
-        }
-    });
+
+         else {
+            alert('For the weather, please type (City),(either State, Provience, or Country): ');
+         }
+     });
+});
+       
+
 
 
 })
