@@ -256,7 +256,7 @@ $("#search-country").on("click", function () {
 
     });
 
-
+// START OF SINUHE JS ================================================================================================================
 
 
 
@@ -265,33 +265,93 @@ $("#search-country").on("click", function () {
 
 
     var cityState = $("#country-input").val().trim()
-    var queryURL = url= "https://api.aerisapi.com/observations/" + cityState + "?client_id=2nCwoHULlzXQ8LvHXCfym&client_secret=TQO1Nn2BIkEADjcZmwrAiAL2mxmFOFinkdJosh4R"
+    var queryURL = "https://api.aerisapi.com/observations/" + cityState + "?client_id=2nCwoHULlzXQ8LvHXCfym&client_secret=TQO1Nn2BIkEADjcZmwrAiAL2mxmFOFinkdJosh4R"
     
-    
-                   
+    // ajax for weather
+
     $.ajax({
         url: queryURL,
         method: "GET"
     }).done(function (json) {
         if (json.success == true) {
             var ob = json.response.ob;
+
+
+           
              // Weather
              $('#weather-results').html('The current weather is ' + ob.weather + '<br>' + ' <br> Currently ' + ob.tempF + '&deg;' + 'F' + '<br> Feels like ' + ob.feelslikeF +  '&deg;' + 'F' + '<br>' + '<br> Currently ' + ob.tempC + '&deg;' + 'C' + '<br> Feels like ' + ob.feelslikeC + '&deg;'  + 'C' +  '<br>' + '<br> The Humidity is: ' + ob.humidity + '%');
-             // TimeStamp
-             $('#time-results').html('Date and time is ' + '<br>' + ob.dateTimeISO +  '<br>' + ' <br> Sunrise with data/time: ' + '<br>' + ob.sunriseISO + '<br>' +  '<br> Sunset with date/time: ' + '<br>' + ob.sunsetISO);
-         
-        }
+      
 
-         else {
-            alert('For the weather, please type (City),(either State, Provience, or Country): ');
-         }
-     });
 
+    // ajax for time zone
+    
+    $.ajax({
+        url: queryURL,
+        method: "GET"
+    }).done(function (response) {
+     
+
+
+        console.log(response)
+
+        var zoneTime = ob.dateTimeISO;
+        var tz = new Date (zoneTime);
+        console.log(tz.toString());
+        
+        var timeDate = ob.dateTimeISO;
+        var dt = new Date (timeDate);
+        console.log(dt.toString());
+
+        var riseGet = ob.sunriseISO;
+        var sr = new Date (riseGet);
+        console.log(sr.toLocaleTimeString());
+
+        var setGet = ob.sunsetISO;
+        var ss = new Date (setGet);
+        console.log(ss.toLocaleTimeString());
+
+        
        
 
+         // TimeStamp
+         $('#time-results').html('Today is ' + '<br>' + dt +  '<br>' + ' <br> Sunrise at: ' + '<br>' + sr.toLocaleTimeString() + '<br>' +  '<br> Sunset at: ' + '<br>' + ss.toLocaleTimeString() + '<br>' + '<br>');
+         
+
+      
+    });
+
+    // var weatherGif = $(cityState).attr('weather-results');
+    // var weatherURL = "https://api.giphy.com/v1/gifs/search?q=" + weatherGif + "&api_key=lVX2szWqWpq4D5Zrcujk3MkqacAtJp7F&limit=10";
+
+    // $.ajax({
+    //     url: weatherURL,
+    // }).done(function(response) {
+    //     console.log(response)
+    //     $('weather-results').html(weatherURL, style="width:100%;height:auto;position:relative;");
 
 
-})
+
+    // });
+
+
+
+
+
+    
+}else {
+   alert('For the weather, please type (City),(either State, Provience, or Country): ');
+}
+
+
+});
+
+
+// onClick ends
+});
+
+    
+
+
 
 
 
