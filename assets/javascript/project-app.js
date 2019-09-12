@@ -201,7 +201,7 @@ $("#search-country").on("click", function () {
         $("#flag-results").prepend(flagImage);
 
         // GET EXCHANGE RATE
-        var exchangeRateURL = "https://free.currconv.com/api/v7/convert?q=USD_"+ currencyCode + "&compact=ultra&apiKey=e7bc0a1e1902cbc31b55"
+        var exchangeRateURL = "https://free.currconv.com/api/v7/convert?q=USD_"+currencyCode + "&compact=ultra&apiKey=e7bc0a1e1902cbc31b55"
 
         $.ajax({
             url: exchangeRateURL,
@@ -209,6 +209,7 @@ $("#search-country").on("click", function () {
         }).then(function (response) {
             console.log(Object.values(response)[0])
             var exchangeRate = Object.values(response)[0].toFixed(2);
+            
 
             // create var for thumbnail image
             var textDiv = $("<div>");
@@ -217,7 +218,6 @@ $("#search-country").on("click", function () {
             var formInput = $("<input>")
             formInput.attr('class', 'form-control input-lg col-9 mr-2');
             formInput.attr('id', 'currencyInput');
-            formInput.attr("style", "margin-bottom: 10px");
 
             var buttonInput = $("<input>")
             buttonInput.attr('type', 'submit');
@@ -247,7 +247,7 @@ $("#search-country").on("click", function () {
                 var convertedAmount = userInput * exchangeRate;
                 console.log(convertedAmount)
 
-                var CurrencyTextDiv = $("<p>").text("Boom, you have: " + convertedAmount +" " + currencyCode+ " to spend");
+                var CurrencyTextDiv = $("<p>").text("Cha-ching, you have: " + convertedAmount + " to spend");
                 CurrencyTextDiv.attr('id', 'CurrencyDisplay');
 
                 $("#currency-results").append(CurrencyTextDiv);
@@ -256,34 +256,104 @@ $("#search-country").on("click", function () {
 
     });
 
+    //================================================================================================================
 
 
 
+    // Weather and TimeStamp api code
 
-    // GET WEATHER
-    var weatherURL = url = "https://api.aerisapi.com/observations/" + userInput + "?client_id=2nCwoHULlzXQ8LvHXCfym&client_secret=TQO1Nn2BIkEADjcZmwrAiAL2mxmFOFinkdJosh4R"
+
 
     var cityState = $("#country-input").val().trim()
-    var queryURL = url= "https://api.aerisapi.com/observations/" + cityState + "?client_id=2nCwoHULlzXQ8LvHXCfym&client_secret=TQO1Nn2BIkEADjcZmwrAiAL2mxmFOFinkdJosh4R"
+    var queryURL = "https://api.aerisapi.com/observations/" + cityState + "?client_id=2nCwoHULlzXQ8LvHXCfym&client_secret=TQO1Nn2BIkEADjcZmwrAiAL2mxmFOFinkdJosh4R"
     
-    
-                   
+    // ajax for weather
+
     $.ajax({
-        url: weatherURL,
+        url: queryURL,
         method: "GET"
     }).done(function (json) {
         if (json.success == true) {
             var ob = json.response.ob;
-            $('#weather-results').text('The current weather is ' + ob.weather + ' <br> Fahrenheit temperature of ' + ob.tempF + '&deg;' + '<br> Celsius temperature of ' + ob.tempC + '&deg;' + '<br> The Humidity is: ' + ob.humidity + '%');
-        }
-        else {
-            alert('An error occurred: ' + json.error.description);
-        }
+
+
+           
+             // Weather
+             $('#weather-results').html('The current weather is ' + ob.weather + '<br>' + ' <br> Currently ' + ob.tempF + '&deg;' + 'F' + '<br> Feels like ' + ob.feelslikeF +  '&deg;' + 'F' + '<br>' + '<br> Currently ' + ob.tempC + '&deg;' + 'C' + '<br> Feels like ' + ob.feelslikeC + '&deg;'  + 'C' +  '<br>' + '<br> The Humidity is: ' + ob.humidity + '%');
+      
+
+
+    // ajax for time zone
+    
+    $.ajax({
+        url: queryURL,
+        method: "GET"
+    }).done(function (response) {
+     
+
+
+        console.log(response)
+
+        var zoneTime = ob.dateTimeISO;
+        var tz = new Date (zoneTime);
+        console.log(tz.toString());
+        
+        var timeDate = ob.dateTimeISO;
+        var dt = new Date (timeDate);
+        console.log(dt.toString());
+
+        var riseGet = ob.sunriseISO;
+        var sr = new Date (riseGet);
+        console.log(sr.toLocaleTimeString());
+
+        var setGet = ob.sunsetISO;
+        var ss = new Date (setGet);
+        console.log(ss.toLocaleTimeString());
+
+        
+       
+
+         // TimeStamp
+         $('#time-results').html('Today is ' + '<br>' + dt +  '<br>' + ' <br> Sunrise at: ' + '<br>' + sr.toLocaleTimeString() + '<br>' +  '<br> Sunset at: ' + '<br>' + ss.toLocaleTimeString() + '<br>' + '<br>');
+         
+
+      
     });
 
+    // var weatherGif = $(cityState).attr('weather-results');
+    // var weatherURL = "https://api.giphy.com/v1/gifs/search?q=" + weatherGif + "&api_key=lVX2szWqWpq4D5Zrcujk3MkqacAtJp7F&limit=10";
+
+    // $.ajax({
+    //     url: weatherURL,
+    // }).done(function(response) {
+    //     console.log(response)
+    //     $('weather-results').html(weatherURL, style="width:100%;height:auto;position:relative;");
 
 
-})
+
+    // });
+
+
+
+
+
+    
+}else {
+   alert('For the weather, please type (City),(either State, Provience, or Country): ');
+}
+
+
+});
+
+
+// onClick ends
+
+
+});
+
+    
+
+
 
 
 
