@@ -1,31 +1,20 @@
 $(document).ready(function () {
     console.log("ready!");
-
-    // GET EXCHANGE RATE
-    // var newexchangeRateURL = "https://free.currconv.com/api/v7/convert?q=USD_AUD&compact=ultra&apiKey=e7bc0a1e1902cbc31b55"
-
-    // $.ajax({
-    //     url: newexchangeRateURL,
-    //     method: "GET"
-    // }).then(function (response) {
-    //     console.log(response.USD_AUD)
-
-    // })
-
 });
 
 
 $("#search-country").on("click", function () {
 
     // Split input to get country & city name
+    var apiKey = "AIzaSyDkjdqana2pUgbg3HgcmKesBXNkeal4970"
     var userInput = $('#country-input').val();
     var cityName = userInput.substr(0, userInput.indexOf(',')).trim();
     var countryName = userInput.substr(userInput.indexOf(',') + 1).trim();
 
     // RETURN YOUTUBE RESULTS
-    var infoVideoURL = "https://www.googleapis.com/youtube/v3/search?part=snippet&order=viewCount&q=" + countryName + "+info+video&type=video&videoDefinition=high&key=AIzaSyBLL2tHYwaiSDhxVoFeqHUjOqhUbuV3HRY"
-    var musicvideoURL = "https://www.googleapis.com/youtube/v3/search?part=snippet&order=viewCount&q=" + countryName + "+music+video&type=video&videoDefinition=high&key=AIzaSyBLL2tHYwaiSDhxVoFeqHUjOqhUbuV3HRY"
-    var newsvideoURL = "https://www.googleapis.com/youtube/v3/search?part=snippet&order=viewCount&q=" + countryName + "+news+video&type=video&videoDefinition=high&key=AIzaSyBLL2tHYwaiSDhxVoFeqHUjOqhUbuV3HRY"
+    var infoVideoURL = "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=" + cityName + "+tourism+video&regionCode=US&key=" + apiKey
+    var musicvideoURL = "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=" + countryName + "+music+video&regionCode=US&key=" + apiKey
+    var newsvideoURL = "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=" + countryName + "+latest+news+video&regionCode=US&key=" + apiKey
 
     // YOUTUBE INFO API RESULTS
     $.ajax({
@@ -59,6 +48,7 @@ $("#search-country").on("click", function () {
             videoImage.attr("src", response.items[i].snippet.thumbnails.default.url);
             videoImage.attr("href", "https://www.youtube.com/watch?v=" + videoURL);
             a.attr("href", "https://www.youtube.com/watch?v=" + videoURL);
+            a.attr("style", "text-decoration: underline");
 
 
             // Appending the paragraph and image to div created
@@ -102,6 +92,7 @@ $("#search-country").on("click", function () {
             videoImage.attr("src", response.items[i].snippet.thumbnails.default.url);
             videoImage.attr("href", "https://www.youtube.com/watch?v=" + videoURL);
             a.attr("href", "https://www.youtube.com/watch?v=" + videoURL);
+            a.attr("style", "text-decoration: underline");
 
             // Appending the paragraph and image to div created
             imgDiv.append(videoImage);
@@ -144,7 +135,7 @@ $("#search-country").on("click", function () {
             videoImage.attr("src", response.items[i].snippet.thumbnails.default.url);
             videoImage.attr("href", "https://www.youtube.com/watch?v=" + videoURL);
             a.attr("href", "https://www.youtube.com/watch?v=" + videoURL);
-
+            a.attr("style", "text-decoration: underline");
 
             // Appending the paragraph and image to div created
             imgDiv.append(videoImage);
