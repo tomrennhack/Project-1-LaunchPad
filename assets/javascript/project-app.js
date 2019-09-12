@@ -12,12 +12,7 @@ $(document).ready(function () {
 
     // })
 
-
-
-
 });
-
-
 
 
 $("#search-country").on("click", function () {
@@ -108,7 +103,6 @@ $("#search-country").on("click", function () {
             videoImage.attr("href", "https://www.youtube.com/watch?v=" + videoURL);
             a.attr("href", "https://www.youtube.com/watch?v=" + videoURL);
 
-
             // Appending the paragraph and image to div created
             imgDiv.append(videoImage);
             imgDiv.append(a);
@@ -189,7 +183,7 @@ $("#search-country").on("click", function () {
 
         // Appending the paragraph and flagimage we created to the "gifDiv" div we created
         flagImage.attr("src", flagURL);
-        flagImage.attr("style", "height: 100px");
+        flagImage.attr("style", "height: 100px; display: block; margin-left: auto; margin-right: auto; width: 50%;");
         textDiv.append(p);
 
         // Appending the paragraph and image to div created
@@ -201,7 +195,7 @@ $("#search-country").on("click", function () {
         $("#flag-results").prepend(flagImage);
 
         // GET EXCHANGE RATE
-        var exchangeRateURL = "https://free.currconv.com/api/v7/convert?q=USD_"+ currencyCode + "&compact=ultra&apiKey=e7bc0a1e1902cbc31b55"
+        var exchangeRateURL = "https://free.currconv.com/api/v7/convert?q=USD_" + currencyCode + "&compact=ultra&apiKey=e7bc0a1e1902cbc31b55"
 
         $.ajax({
             url: exchangeRateURL,
@@ -212,18 +206,21 @@ $("#search-country").on("click", function () {
 
             // create var for thumbnail image
             var textDiv = $("<div>");
+            var currencyConverterDiv = $("<div>");
+            currencyConverterDiv.attr('id', 'CurrencyDisplay');
 
             // create currency conversion section
             var formInput = $("<input>")
             formInput.attr('class', 'form-control input-lg col-9 mr-2');
             formInput.attr('id', 'currencyInput');
-            formInput.attr("style", "margin-bottom: 10px");
+            
 
             var buttonInput = $("<input>")
             buttonInput.attr('type', 'submit');
             buttonInput.attr('id', 'currencyButton');
             buttonInput.attr('class', 'btn btn-primary col');
             buttonInput.attr('value', 'Convert');
+            buttonInput.attr("style", "margin-top: 10px; margin-bottom: 10px");
 
             // Creating a paragraph tag with the result item's rating
             var p = $("<p>").text("Current Exchange Rate: " + exchangeRate);
@@ -235,6 +232,7 @@ $("#search-country").on("click", function () {
             $("#currency-results").append(textDiv);
             $("#currency-results").append(formInput);
             $("#currency-results").append(buttonInput);
+            $("#currency-results").append(currencyConverterDiv);
 
             // currency conversion calculation
             $("#currencyButton").on("click", function () {
@@ -242,32 +240,28 @@ $("#search-country").on("click", function () {
                 $("#CurrencyDisplay").empty();
 
                 var userInput = $('#currencyInput').val();
-                console.log(userInput)
 
-                var convertedAmount = userInput * exchangeRate;
-                console.log(convertedAmount)
+                // create var for currency converter
+                
+                var convertedAmount = (userInput * exchangeRate).toFixed(0);
+                var CurrencyTextDiv = $("<p>").text("Boom, you have: " + convertedAmount + " " + currencyCode + " to spend when you land");
+                
+                currencyConverterDiv.append(CurrencyTextDiv);
+                
+                currencyConverterDiv.attr('id', 'CurrencyDisplay');
 
-                var CurrencyTextDiv = $("<p>").text("Boom, you have: " + convertedAmount +" " + currencyCode+ " to spend");
-                CurrencyTextDiv.attr('id', 'CurrencyDisplay');
-
-                $("#currency-results").append(CurrencyTextDiv);
+                $("#CurrencyDisplay").append(CurrencyTextDiv);
             })
         });
 
     });
 
-
-
-
-
     // GET WEATHER
     var weatherURL = url = "https://api.aerisapi.com/observations/" + userInput + "?client_id=2nCwoHULlzXQ8LvHXCfym&client_secret=TQO1Nn2BIkEADjcZmwrAiAL2mxmFOFinkdJosh4R"
 
     var cityState = $("#country-input").val().trim()
-    var queryURL = url= "https://api.aerisapi.com/observations/" + cityState + "?client_id=2nCwoHULlzXQ8LvHXCfym&client_secret=TQO1Nn2BIkEADjcZmwrAiAL2mxmFOFinkdJosh4R"
-    
-    
-                   
+    var queryURL = url = "https://api.aerisapi.com/observations/" + cityState + "?client_id=2nCwoHULlzXQ8LvHXCfym&client_secret=TQO1Nn2BIkEADjcZmwrAiAL2mxmFOFinkdJosh4R"
+
     $.ajax({
         url: weatherURL,
         method: "GET"
@@ -280,8 +274,6 @@ $("#search-country").on("click", function () {
             alert('An error occurred: ' + json.error.description);
         }
     });
-
-
 
 })
 
