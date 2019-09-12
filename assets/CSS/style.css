@@ -17,7 +17,7 @@
 }
 
 .team-names {
-    font-size: 1.1em;
+    font-size: 0.8em;
     /* border-left: solid 1px whitesmoke; */
 }
 
@@ -25,11 +25,10 @@
     color: whitesmoke;
     /* border: solid 2px whitesmoke; */
     /* background-color: rgb(60,65,67,0.8); */
-    background-color: rgb(84,61,90,.8);
+    background-color: rgb(84,61,90,.9);
     border-radius: 10px;
     text-align: center;
     margin-left: 10px;
-    /* height: 50px; */
 }
 
 a {
@@ -52,7 +51,7 @@ a:hover {
 }
 
 #body-section-bottom {
-    background-color: rgb(84,61,90,.7);
+    background-color: rgb(84,61,90,.5);
     border-radius: 15px;
     margin: -20px 50px 50px 50px;
     z-index: 0;
@@ -71,8 +70,6 @@ li {
     font-size: 1.2em;
 }
 
-
-
 hr {
     border-top: solid 1px rgb(245,245,245,.5);
 }
@@ -85,7 +82,20 @@ hr {
 #body-index {
     background-image: url(../images/GP-mountains.jpg);
     background-size: 110%;
-    position: absolute;
+    background-attachment: fixed;
+    background-position: top;
+}
+
+#body-section-team {
+    background-color: rgb(30,31,34,.8);
+    left: 0;
+    bottom: 0;
+    right: 0;
+    padding: 10px 30px 0px 30px;
+}
+
+.team-member {
+    font-size: 0.7em;
 }
 
 
@@ -96,6 +106,8 @@ hr {
 #body-future {
     background-image: url(../images/sky.jpeg);
     background-size: 110%;
+    background-attachment: fixed;
+    background-position: top;
 }
 
 
@@ -106,7 +118,9 @@ hr {
 
 #body-app {
     background-image: url(../images/GP-city.jpg);
-    background-size:110%;
+    background-size: 110%;
+    background-attachment: fixed;
+    background-position: top;
 }
 
 #user-input-section {
